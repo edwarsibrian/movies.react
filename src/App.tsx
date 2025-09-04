@@ -1,35 +1,63 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useEffect, useState } from 'react';
 import './App.css'
+import MovieList from './features/movies/components/MovieList';
+import type Movie from './features/movies/models/movie.model'
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    const [movies, setMovies] = useState<AppState>({});
+
+    useEffect(() => {
+        setTimeout(() => {
+            const inCinemas: Movie[] = [{
+                id: 1,
+                title: "Inception",
+                posterUrl: "https://upload.wikimedia.org/wikipedia/en/2/2e/Inception_%282010%29_theatrical_poster.jpg"
+            }, {
+                id: 2,
+                title: "The Dark Knight",
+                posterUrl: "https://upload.wikimedia.org/wikipedia/sco/8/8a/Dark_Knight.jpg"
+            }, {
+                id: 3,
+                title: "Interstellar",
+                posterUrl: "https://upload.wikimedia.org/wikipedia/en/b/bc/Interstellar_film_poster.jpg"
+            }];
+
+            const comingSoon: Movie[] = [{
+                id: 4,
+                title: "Dune",
+                posterUrl: "https://translate.google.com/website?sl=en&tl=es&hl=es&client=srp&u=https://upload.wikimedia.org/wikipedia/en/8/8e/Dune_%25282021_film%2529.jpg"
+            }, {
+                id: 5,
+                title: "No Time to Die",
+                posterUrl: "https://upload.wikimedia.org/wikipedia/en/f/fe/No_Time_to_Die_poster.jpg"
+            }, {
+                id: 6,
+                title: "The French Dispatch",
+                posterUrl: "https://upload.wikimedia.org/wikipedia/en/7/78/The_French_Dispatch.jpeg"
+                }];
+
+            setMovies({ inCinemas, comingSoon });
+
+        }, 1000);
+    }, []);
+
+    
+
+
+    return (
+        <>
+            <h3>On Cinema</h3>
+            <MovieList movies={movies.inCinemas} />
+
+            <h3>Coming Soon</h3>
+            <MovieList movies={movies.comingSoon} />
+        </>
+    );
 }
 
-export default App
+interface AppState {
+    inCinemas?: Movie[];
+    comingSoon?: Movie[];
+}
+
