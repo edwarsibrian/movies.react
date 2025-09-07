@@ -1,14 +1,34 @@
+import { useEffect, useState } from "react";
 import { useParams } from "react-router";
+import type CreateActorModel from "../models/CreateActor.model";
+import ActorForm from "./ActorForm";
+import Loading from "../../../components/Loading";
+import type { SubmitHandler } from "react-hook-form";
 
 export default function EditActor() {
+
     const { id } = useParams<{ id: string }>();
+
+    const [model, setModel] = useState<CreateActorModel | undefined>(undefined);
+
+    const onSubmit: SubmitHandler<CreateActorModel> = async (data) => {
+        console.log('Editing actor...');
+        await new Promise(resolve => setTimeout(resolve, 2000));
+        console.log(data);
+    }
+
+    useEffect(() => {
+        const timerId = setTimeout(() => {
+            setModel({ actorName: 'Robert Downey Jr. ' + id, birthDate: '1965-04-04' });
+        }, 1000);
+
+        return () => clearTimeout(timerId);
+    }, [id]);
 
     return (
         <>
             <h3>Edit Actor</h3>
-            <p>Editing actor with ID: {id}</p>
-            {/* Here you would typically include a form to edit the actor's details */}
-            {/* For example, you might use a form component and pass the actor's*/}
+            {model ? <ActorForm model={model} onSubmit={onSubmit} /> : <Loading />}
         </>
     )
 }
