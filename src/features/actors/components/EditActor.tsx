@@ -19,7 +19,7 @@ export default function EditActor() {
 
     useEffect(() => {
         const timerId = setTimeout(() => {
-            setModel({ actorName: 'Robert Downey Jr. ' + id, birthDate: '1965-04-04' });
+            setModel({ actorName: 'Liv Tyler ' + id, birthDate: '1977-07-01', picture: 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/Liv_Tyler_%282016%29_%28cropped%29.jpg/800px-Liv_Tyler_%282016%29_%28cropped%29.jpg' });
         }, 1000);
 
         return () => clearTimeout(timerId);
