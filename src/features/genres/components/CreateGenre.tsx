@@ -1,14 +1,16 @@
 import { type SubmitHandler } from "react-hook-form";
 import type CreateGenreModel from "../models/CreateGenre.model";
 import GenresForm from "./GenresForm";
+import apiClient from "../../../api/axiosClient";
+import { useNavigate } from "react-router";
 
 
 export default function CreateGenre() {
 
+    const navigate = useNavigate();
+
 	const onSubmit: SubmitHandler<CreateGenreModel> = async (data) => {
-        console.log('Creating genre...');
-		await new Promise(resolve => setTimeout(resolve, 2000));
-		console.log(data);
+		apiClient.post('/genres', data).then(() => navigate('/genres'));
 	}
 
 	return (
