@@ -8,7 +8,7 @@ It allows you to:
 - Assign movies to different **cinema halls**.  
 - Visualize information interactively.  
 
-The app consumes a REST **API** (see [Movies.API](https://github.com/your-username/movies.api) for the backend implementation).
+The app consumes a REST **API** (see [Movies.API](https://github.com/edwarsibrian/Movies.API) for the backend implementation).
 
 ---
 
@@ -43,23 +43,15 @@ The app consumes a REST **API** (see [Movies.API](https://github.com/your-userna
 
 	Backend API: Movies.API
 
-🛠️ Tech Stack
+🛠️ **Tech Stack**
 
-React
-
-TypeScript
-
-Vite (React + TS template)
-
-React Router
-
-Bootstrap
-
-Leaflet
-
-Axios
-
-React Hook Form
-
-Yup
+- React
+- TypeScript
+- Vite (React + TS template)
+- React Router
+- Bootstrap
+- Leaflet
+- Axios
+- React Hook Form
+- Yup
 
