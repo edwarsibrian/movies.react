@@ -27,8 +27,8 @@ The app consumes a REST **API** (see [Movies.API](https://github.com/edwarsibria
 
 1. Clone the repository:
    
-   git clone https://github.com/your-username/movies-app.git
-   cd movies-app
+   git clone https://github.com/edwarsibrian/movies.react.git
+   cd movies.react
 
 2. Install dependencies:
 
