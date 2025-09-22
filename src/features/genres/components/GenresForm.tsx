@@ -5,6 +5,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { NavLink } from "react-router";
 import { FirstLetterUppercase } from "../../../Validations/Validations";
 import Button from "../../../components/Button";
+import ShowErrorsApi from "../../../components/ShowErrorsApi";
 
 export default function GenresForm(props: GenresFormProps) {
 
@@ -19,6 +20,7 @@ export default function GenresForm(props: GenresFormProps) {
 
     return (
         <>
+            <ShowErrorsApi errors={props.errors ?? []} />
             <form onSubmit={handleSubmit(props.onSubmit)}>
                 <div className="form-group">
                     <label htmlFor="genreName">Genre Name</label>
@@ -37,6 +39,7 @@ export default function GenresForm(props: GenresFormProps) {
 interface GenresFormProps {
     model?: CreateGenreModel;
     onSubmit: SubmitHandler<CreateGenreModel>;
+    errors?: string[];
 }
 
 const validationSchema = yup.object({
