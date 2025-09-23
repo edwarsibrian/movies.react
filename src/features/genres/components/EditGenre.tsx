@@ -27,7 +27,7 @@ export default function EditGenre() {
 	return (
 		<>
 			<h3>Edit Genre</h3>
-			{model ? < GenresForm model={model} onSubmit={onSubmit} /> : <Loading />}
+			{model ? < GenresForm errors={[]} model={model} onSubmit={onSubmit} /> : <Loading />}
 		</>
 	)
 }
